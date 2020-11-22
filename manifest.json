@@ -1,6 +1,6 @@
 {
   "name": "Magpie",
-  "version": "1.0",
+  "version": "0.0.0.1",
   "manifest_version": 2,
   "content_scripts": [
     {
@@ -13,5 +13,10 @@
     "loading.html",
     "no_results.html",
     "magpie-btn.html"
-  ]
+  ],
+  "icons": {
+    "16": "icon16x16.png",
+    "48": "icon48x48.png",
+    "128": "icon128x128.png"
+  }
 }

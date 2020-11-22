@@ -1,5 +1,3 @@
-import key from "keys.js";
-
 var mpBtn = '';
 var mpPopup = '';
 var mpLoad = '';
@@ -59,7 +57,7 @@ var addMagpie = function () {
        "method": "GET",
        "timeout": 0,
        "headers": {
-         "Authorization": `Bearer ${key.key}`,
+         "Authorization": `Bearer `,
        },
      };
 
@@ -82,11 +80,12 @@ var addMagpie = function () {
           let mpPopupCol = document.getElementById("magpie-popup-col");  
           for (let i = 0; i < res.length; i++) {
             let color = res[i].color === 0 ? "red" : (res[i].color === 1 ? "yellow" : "green");
+            let rating = res[i].color === 0 ? "Negative" : (res[i].color === 1 ? "Neutral" : "Positive");
             let newsInfoString = `
             <div class="news-info inline">
             <a class="w-full group" href="${res[i].url}" target="_blank">
               <div class="flex flex-row w-full justify-evenly items-center my-2 group-hover:bg-gray-200">
-              <div class="w-1/12 bg-${color}-700 text-center text-white text-md mr-2 text-lg">
+              <div title="Sentiment Analysis: ${rating}" class="w-1/12 bg-${color}-700 text-center text-white text-md mr-2 text-lg">
                 ${res[i].sentimentScore}
               </div>
               <div class="flex flex-col w-9/12">
