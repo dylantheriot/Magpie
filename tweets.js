@@ -73,7 +73,6 @@ var addMagpie = function () {
       };
 
       $.ajax(postSettings).done(function (res) {
-        console.log('WOOHOO', res);
          $('.magpie-load').remove();
          if (res.length === 0) {
           $(element).append(domNoResults);
