@@ -4,6 +4,7 @@
   "manifest_version": 2,
   "content_scripts": [
     {
+      "css": ["tailwind.css"],
       "matches": ["http://twitter.com/*", "https://twitter.com/*"],
       "js": ["jquery.js", "tweets.js", "jquery.withinviewport.js", "withinviewport.js"]
     }

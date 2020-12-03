@@ -20,7 +20,6 @@ $.get(chrome.runtime.getURL('/no_results.html'), function (data) {
   noResults = data;
 });
 
-$('head').append(`<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">`);
 $('body').append(`<style>
   .tweet-button:hover {
     background: black !important;
@@ -49,6 +48,7 @@ var addMagpie = function () {
    let domMpLoad = parser.parseFromString(mpLoad, "text/html").documentElement.querySelector(".magpie-load");
    let domNoResults = parser.parseFromString(noResults, "text/html").documentElement.querySelector(".magpie-popup");
    let apiUrl = "https://api.twitter.com/1.1/statuses/show.json?id=" + id;
+
    domMpBtn.onclick = function () {
      $('.magpie-popup').remove();
      $(element).append(domMpLoad);
@@ -60,6 +60,7 @@ var addMagpie = function () {
          "Authorization": `Bearer `,
        },
      };
+     // don't take the key please, thank you :D
 
      $.ajax(settings).done(function (response) {
       // alert(response.text);
@@ -81,6 +82,7 @@ var addMagpie = function () {
           for (let i = 0; i < res.length; i++) {
             let color = res[i].color === 0 ? "red" : (res[i].color === 1 ? "yellow" : "green");
             let rating = res[i].color === 0 ? "Negative" : (res[i].color === 1 ? "Neutral" : "Positive");
+            let imgUrl = res[i].image === "" ? "https://image.shutterstock.com/image-vector/newspaper-cover-page-260nw-142034005.jpg" : res[i].image;
             let newsInfoString = `
             <div class="news-info inline">
             <a class="w-full group" href="${res[i].url}" target="_blank">
@@ -98,7 +100,7 @@ var addMagpie = function () {
               </div>
                 <div class="w-2/12 ml-2">
                   <img
-                    src="${res[i].image}">
+                    src="${imgUrl}">
                 </div>
               </div>
               <div class="flex flex-row justify-end">
